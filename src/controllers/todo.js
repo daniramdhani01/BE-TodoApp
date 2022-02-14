@@ -18,10 +18,12 @@ exports.showTodos = async (req, res) => {
 
 exports.showTodo = async (req, res) => {
     try {
-        const id = req.params
-        console.log(id)
-
-        const todo = await todolist_tb.findOne({ where: { id } })
+        const { id } = req.params
+        const todo = await todolist_tb.findOne({
+            where: {
+                id
+            }
+        })
 
         if (todo === null) {
             console.log('Data Not found!');
@@ -32,9 +34,8 @@ exports.showTodo = async (req, res) => {
             todo
         })
     } catch (err) {
-        console.log(err)
         res.send({
-            status: 'failed get todo',
+            status: 'failed',
             message: 'server error'
         })
     }
