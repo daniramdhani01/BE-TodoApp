@@ -15,6 +15,26 @@ exports.showTodos = async (req, res) => {
         })
     }
 }
+exports.showTodo = async (req, res) => {
+    try {
+        const id = req.params
+        const todo = await todolist_tb.findOne({
+            where: {
+                id
+            }
+        })
+
+        res.send({
+            status: 'success',
+            todo
+        })
+    } catch (err) {
+        res.send({
+            status: 'failed',
+            message: 'server error'
+        })
+    }
+}
 
 exports.addTodo = async (req, res) => {
     try {

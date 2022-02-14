@@ -4,6 +4,7 @@ const router = express.Router();
 
 const {
     showTodos,
+    showTodo,
     addTodo,
     deleteTodo,
     edit,
@@ -12,6 +13,7 @@ const {
 } = require('../controllers/todo')
 
 router.get('/todos', showTodos)
+router.get('/todo', showTodo)
 router.post('/todo', addTodo)
 router.post('/todo/:id', deleteTodo)
 router.patch('/todo/:id', edit)
