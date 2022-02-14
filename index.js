@@ -12,7 +12,7 @@ const router = require('./src/routes')
 
 app.use("/api/v1", router)
 
-const port = 5000
+const port = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
     res.send('hai danii, kamu dapat project baruu')
