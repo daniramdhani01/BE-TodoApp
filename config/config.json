@@ -1,20 +1,3 @@
-if (env === 'production') {
-  // Break apart the Heroku database url and rebuild the configs we need
-  const { DATABASE_URL } = process.env;
-  const dbUrl = url.parse(DATABASE_URL);
-  const username = dbUrl.auth.substr(0, dbUrl.auth.indexOf(':'));
-  const password = dbUrl.auth.substr(
-    dbUrl.auth.indexOf(':') + 1,
-    dbUrl.auth.length
-  );
-  const dbName = dbUrl.path.slice(1);
-  const host = dbUrl.hostname;
-  const { port } = dbUrl;
-  config.host = host;
-  config.port = port;
-  sequelize = new Sequelize(dbName, username, password, config);
-}
-
 {
   "development": {
     "username": "root",
@@ -32,7 +15,7 @@ if (env === 'production') {
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "postgres://warapmomullzzt:0b1b017490dd479db5b784df88a0a46f3fb469d5d0887c8d85be85f0f2baa2bd@ec2-3-224-157-224.compute-1.amazonaws.com:5432/df0gckkkri2089",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "protocol": "postgres",
     "ssl": true,
