@@ -4,6 +4,10 @@ exports.showTodos = async (req, res) => {
     try {
         const todos = await todolist_tb.findAll()
 
+        todos.sort((a, b) => {
+            return b.createdAt - a.createdAt
+        })
+
         res.send({
             status: 'success',
             todos
