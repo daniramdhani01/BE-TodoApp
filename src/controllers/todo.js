@@ -58,6 +58,7 @@ exports.addTodo = async (req, res) => {
             todo
         })
     } catch (err) {
+        console.log(err)
         res.send({
             status: 'failed',
             message: 'server error'
